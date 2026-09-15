@@ -447,10 +447,18 @@ const seedDB = async () => {
 
   } catch (err) {
     console.error("❌ Seeding failed:", err);
-  } finally {
-    await mongoose.connection.close();
-    process.exit(0);
   }
 };
 
-seedDB();
+export const runAutoSeed = async () => {
+  const Product = (await import("./models/Product.js")).default;
+  const count = await Product.countDocuments();
+  if (count === 0) {
+    await seedDB(false);
+  }
+};
+
+if (process.argv[1] && process.argv[1].includes("seeder.js")) {
+  seedDB(true);
+}
+

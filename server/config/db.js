@@ -12,6 +12,14 @@ const connectDB = async () => {
         await mongoose.connect(connUri);
 
         console.log("✅ MongoDB Connected Successfully");
+
+        const Product = (await import("../models/Product.js")).default;
+        const count = await Product.countDocuments();
+        if (count === 0) {
+            console.log("🌱 Database is empty! Auto-seeding initial products & users...");
+            const { runAutoSeed } = await import("../seeder.js");
+            await runAutoSeed();
+        }
     } catch (error) {
         console.log("❌ MongoDB Connection Warning:", error.message);
         // Do not crash server process on cloud environment so Render health check succeeds
