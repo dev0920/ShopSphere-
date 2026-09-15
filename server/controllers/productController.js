@@ -230,7 +230,6 @@ export const getProducts = async (req, res) => {
       products: FALLBACK_PRODUCTS
     });
   }
-  }
 };
 
 // =====================================================
