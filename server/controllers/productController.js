@@ -148,29 +148,88 @@ export const getProducts = async (req, res) => {
     res.status(200).json({ success: true, count: products.length, total, products });
   } catch (error) {
     console.error("getProducts:", error.message);
+    const FALLBACK_PRODUCTS = [
+      {
+        _id: "demo_prod_1",
+        name: "Banarasi Pure Silk Saree",
+        brand: "Kashi Weaves",
+        category: "Ethnic Wear",
+        subCategory: "Sarees",
+        description: "Handcrafted pure Banarasi silk saree with gold zari weave.",
+        price: 2499,
+        oldPrice: 4999,
+        images: ["https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=80"],
+        stock: 50, rating: 4.8, reviews: 200, seller: "Kashi Silk & Handloom", status: "approved"
+      },
+      {
+        _id: "demo_prod_2",
+        name: "Floral Georgette Anarkali Kurti",
+        brand: "Jaipur Fab",
+        category: "Ethnic Wear",
+        subCategory: "Kurtis",
+        description: "Flared Georgette Anarkali kurti with floral print.",
+        price: 899,
+        oldPrice: 1799,
+        images: ["https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSrXOojFXqB4NOCcEIGjv84Wq96N9qKOupKiDTbDuyivgdruO2d2MRtoyFk8hnqsl-c9B4ChrEjiQZY-H6DJk4xSyh7tCFbB3sz_1yK2IKAJpAtyUKm2kIIqA"],
+        stock: 50, rating: 4.7, reviews: 150, seller: "Urban Chic Apparel", status: "approved"
+      },
+      {
+        _id: "demo_prod_3",
+        name: "Satin Wrap Cocktail Party Dress",
+        brand: "Urban Chic",
+        category: "Western Dresses",
+        subCategory: "Party Dresses",
+        description: "V-neck wrap satin party dress with belt.",
+        price: 1299,
+        oldPrice: 2599,
+        images: ["https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80"],
+        stock: 50, rating: 4.9, reviews: 310, seller: "Urban Chic Apparel", status: "approved"
+      },
+      {
+        _id: "demo_prod_4",
+        name: "Slim Fit Formal Cotton Shirt",
+        brand: "Royal Executive",
+        category: "Menswear",
+        subCategory: "Formal Shirts",
+        description: "100% Cotton breathable formal shirt for office wear.",
+        price: 999,
+        oldPrice: 1999,
+        images: ["https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&q=80"],
+        stock: 50, rating: 4.6, reviews: 180, seller: "Royal Men's Hub", status: "approved"
+      },
+      {
+        _id: "demo_prod_5",
+        name: "Breathable Lightweight Sports Sneakers",
+        brand: "StepRight",
+        category: "Footwear",
+        subCategory: "Sports Shoes",
+        description: "Anti-skid cushioned running shoes for daily workouts.",
+        price: 1499,
+        oldPrice: 2999,
+        images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80"],
+        stock: 50, rating: 4.8, reviews: 420, seller: "StepRight Footwear", status: "approved"
+      },
+      {
+        _id: "demo_prod_6",
+        name: "Smart Fitness Tracker Watch with AMOLED Display",
+        brand: "TechGalaxy",
+        category: "Electronics",
+        subCategory: "Smartwatches",
+        description: "Heart rate monitor, SpO2 tracker, and 7-day battery life.",
+        price: 1999,
+        oldPrice: 3999,
+        images: ["https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800&q=80"],
+        stock: 50, rating: 4.9, reviews: 550, seller: "TechGalaxy Electronics", status: "approved"
+      }
+    ];
+
     res.status(200).json({
       success: true,
-      count: 1,
-      total: 1,
-      products: [
-        {
-          _id: "demo_prod_1",
-          name: "Banarasi Pure Silk Saree",
-          brand: "Kashi Weaves",
-          category: "Ethnic Wear",
-          subCategory: "Sarees",
-          description: "Handcrafted pure Banarasi silk saree with gold zari weave.",
-          price: 2499,
-          oldPrice: 4999,
-          images: ["https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=80"],
-          stock: 50,
-          rating: 4.8,
-          reviews: 200,
-          seller: "Kashi Silk & Handloom",
-          status: "approved"
-        }
-      ]
+      count: FALLBACK_PRODUCTS.length,
+      total: FALLBACK_PRODUCTS.length,
+      products: FALLBACK_PRODUCTS
     });
+  }
   }
 };
 

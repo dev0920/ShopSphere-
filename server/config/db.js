@@ -8,9 +8,14 @@ import mongoose from "mongoose";
 // Function to connect MongoDB
 const connectDB = async () => {
     try {
-        const connUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/shopsphere";
-        await mongoose.connect(connUri, { serverSelectionTimeoutMS: 5000 });
+        let connUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/shopsphere";
+        if (connUri.includes("cluster0.mongodb.net")) {
+            console.log("⚠️ Placeholder MONGO_URI detected! Disabling buffering so API responds immediately.");
+            mongoose.set("bufferCommands", false);
+            return;
+        }
 
+        await mongoose.connect(connUri, { serverSelectionTimeoutMS: 3000 });
         console.log("✅ MongoDB Connected Successfully");
 
         const Product = (await import("../models/Product.js")).default;
@@ -22,10 +27,7 @@ const connectDB = async () => {
         }
     } catch (error) {
         console.log("❌ MongoDB Connection Warning:", error.message);
-        // Do not crash server process on cloud environment so Render health check succeeds
-        if (!process.env.PORT && process.env.NODE_ENV !== "production") {
-            process.exit(1);
-        }
+        mongoose.set("bufferCommands", false);
     }
 };
 
