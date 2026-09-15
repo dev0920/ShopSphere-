@@ -1,0 +1,522 @@
+/* ============================================================
+   ShopSphere My Orders & Live Tracking UI Styles
+   ============================================================ */
+
+.mo-root {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #0f172a;
+  padding-bottom: 80px;
+}
+
+/* ── Top Header ── */
+.mo-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.04);
+}
+
+.mo-header-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mo-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #0f172a;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.mo-logo span {
+  font-size: 1.6rem;
+}
+
+.mo-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.mo-back-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  transform: translateX(-2px);
+}
+
+/* ── Main Container & Banner ── */
+.mo-container {
+  max-width: 1000px;
+  margin: 32px auto 0;
+  padding: 0 20px;
+}
+
+.mo-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 32px 28px;
+  margin-bottom: 32px;
+  box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.mo-banner-title {
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+}
+
+.mo-banner-sub {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.mo-stat-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px 20px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* ── Filter Tabs ── */
+.mo-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.mo-tab {
+  padding: 8px 18px;
+  border-radius: 50px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.mo-tab:hover {
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.mo-tab.active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ── Empty State Card ── */
+.mo-empty-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 60px 32px;
+  text-align: center;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.mo-empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.mo-empty-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px;
+}
+
+.mo-empty-desc {
+  color: #64748b;
+  font-size: 1rem;
+  max-width: 400px;
+  margin: 0 auto 24px;
+}
+
+.mo-empty-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
+  transition: all 0.2s ease;
+}
+
+.mo-empty-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ── Order Card ── */
+.mo-order-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mo-order-card:hover {
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.09);
+}
+
+/* Order Card Top Header */
+.mo-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 20px;
+}
+
+.mo-order-id-tag {
+  font-family: monospace;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  background: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mo-order-date {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.mo-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.mo-status-badge--placed { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.mo-status-badge--processing { background: #fffbeb; color: #b45309; border: 1px solid #fef3c7; }
+.mo-status-badge--shipped { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+.mo-status-badge--delivered { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+.mo-status-badge--cancelled { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
+
+/* ── Live Tracking Timeline Bar ── */
+.mo-timeline-container {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.mo-timeline-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.mo-timeline-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.mo-timeline-line-bg {
+  position: absolute;
+  top: 18px;
+  left: 8%;
+  right: 8%;
+  height: 4px;
+  background: #cbd5e1;
+  z-index: 1;
+}
+
+.mo-timeline-line-fill {
+  height: 100%;
+  background: #10b981;
+  transition: width 0.4s ease;
+}
+
+.mo-t-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.mo-t-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  transition: all 0.3s ease;
+}
+
+.mo-t-step.completed .mo-t-icon {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.mo-t-step.active .mo-t-icon {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+.mo-t-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  text-align: center;
+}
+
+.mo-t-step.active .mo-t-label,
+.mo-t-step.completed .mo-t-label {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* ── Items List ── */
+.mo-items-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.mo-item-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #f1f5f9;
+}
+
+.mo-item-thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.mo-item-details {
+  flex: 1;
+}
+
+.mo-item-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+
+.mo-item-sub {
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.mo-item-sub strong {
+  color: #334155;
+}
+
+.mo-item-price-tag {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0f172a;
+  text-align: right;
+}
+
+/* ── Footer Info & Action Bar ── */
+.mo-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.mo-shipping-summary {
+  font-size: 0.85rem;
+  color: #475569;
+  max-width: 500px;
+  line-height: 1.4;
+}
+
+.mo-total-price-pill {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.mo-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mo-btn-secondary {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mo-btn-secondary:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.mo-btn-primary {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.mo-btn-primary:hover {
+  background: #1d4ed8;
+}
+
+/* Loading Shimmer Skeleton */
+.mo-skeleton {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: moShimmer 1.5s infinite;
+  border-radius: 12px;
+  height: 140px;
+  margin-bottom: 20px;
+}
+
+@keyframes moShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Mobile Responsive Media Queries ── */
+@media (max-width: 768px) {
+  .mo-container {
+    padding: 16px !important;
+  }
+  .mo-card-footer {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+  }
+  .mo-card-actions {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+  .mo-timeline-track {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .mo-item-card {
+    grid-template-columns: 60px 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mo-banner-title {
+    font-size: 20px !important;
+  }
+  .mo-filter-bar {
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    padding-bottom: 6px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mo-tab {
+    flex-shrink: 0 !important;
+  }
+}

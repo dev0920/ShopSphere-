@@ -1,0 +1,18 @@
+# Dependencies
+node_modules
+client/node_modules
+server/node_modules
+
+# Environment Variables
+.env
+server/.env
+client/.env
+
+# Build & Temp Files
+client/dist
+client/build
+*.log
+.DS_Store
+
+# Scratch files
+server/scratch

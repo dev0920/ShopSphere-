@@ -1,0 +1,187 @@
+/* ==========================================================
+   ShopSphere — Vendor Storefront Page Styles
+   ========================================================== */
+
+.vs-page-wrapper {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Hero Banner ── */
+.vs-banner-section {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
+  color: #ffffff;
+  padding: 40px 24px;
+  box-shadow: 0 4px 20px rgba(49, 46, 129, 0.2);
+}
+
+.vs-banner-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.vs-store-identity {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.vs-store-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.vs-store-info h1 {
+  font-size: 28px;
+  font-weight: 900;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+}
+
+.vs-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.vs-store-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 6px 0 0 0;
+}
+
+/* Store Stats Strip */
+.vs-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.vs-stat-pill {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Main Store Content ── */
+.vs-main-container {
+  max-width: 1240px;
+  margin: 32px auto;
+  padding: 0 24px;
+  flex: 1;
+  width: 100%;
+}
+
+.vs-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.vs-section-title {
+  font-size: 22px;
+  font-weight: 900;
+  margin: 0;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vs-search-input {
+  padding: 10px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  width: 280px;
+  transition: border-color 0.2s ease;
+}
+
+.vs-search-input:focus {
+  border-color: #f43397;
+}
+
+/* Product Grid */
+.vs-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* Empty State */
+.vs-empty-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 60px 20px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.vs-empty-icon {
+  font-size: 60px;
+  margin-bottom: 12px;
+}
+
+.vs-empty-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+}
+
+.vs-empty-card p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0 0 20px 0;
+}
+
+@media (max-width: 768px) {
+  .vs-banner-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .vs-store-identity {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
