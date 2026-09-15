@@ -726,10 +726,11 @@
   .home-reviews-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .home-section { padding: 32px 16px; }
+  .home-section { padding: 24px 12px; }
+  .home-product-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
   .home-cats-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .home-section-title { font-size: 22px; }
-  .home-section-head { flex-direction: column; }
+  .home-section-title { font-size: 20px; }
+  .home-section-head { flex-direction: column; align-items: flex-start; gap: 8px; }
   .home-flash-header { flex-direction: column; align-items: flex-start; }
   .home-timer-box { width: 100%; justify-content: space-between; }
   .home-reseller-inner { flex-direction: column; text-align: center; }
@@ -738,3 +739,8 @@
   .home-newsletter-box input { width: 100%; background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; }
   .home-newsletter-box button { width: 100%; }
 }
+@media (max-width: 480px) {
+  .home-product-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .home-cats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+}
+

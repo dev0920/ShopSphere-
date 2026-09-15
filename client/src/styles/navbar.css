@@ -779,6 +779,21 @@
   }
 }
 
+@media (max-width: 500px) {
+  .nb-inner {
+    gap: 6px;
+    padding: 0 10px;
+  }
+  .nb-location-widget {
+    padding: 4px 8px;
+    margin: 0;
+  }
+  .nb-location-text {
+    display: none;
+  }
+}
+
+
 /* ── Live Search Suggestions Dropdown ── */
 .nb-search-wrap {
   position: relative;
