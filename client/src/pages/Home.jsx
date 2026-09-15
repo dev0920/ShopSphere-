@@ -296,8 +296,8 @@ export default function Home() {
 
   // Filtered products for Tabbed Section
   const tabProducts = activeTab === "All"
-    ? products.slice(0, 10)
-    : products.filter(p => p.category === activeTab).slice(0, 10);
+    ? products.slice(0, 24)
+    : products.filter(p => p.category === activeTab).slice(0, 24);
 
   // Flash Sale Deals (highest discount)
   const flashSaleDeals = products
@@ -505,7 +505,7 @@ export default function Home() {
         {/* ── 7. Category Spotlight Product Rows ── */}
         {["Electronics", "Ethnic Wear", "Western Dresses", "Menswear", "Footwear", "Home Decor", "Beauty", "Jewellery", "Bags", "Watches"].map(catSlug => {
           const catObj = CATEGORIES.find(c => c.slug === catSlug);
-          const catProds = products.filter(p => p.category === catSlug).slice(0, 5);
+          const catProds = products.filter(p => p.category === catSlug).slice(0, 12);
           if (!catObj || catProds.length === 0) return null;
 
           return (
