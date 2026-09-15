@@ -8,9 +8,8 @@ import mongoose from "mongoose";
 // Function to connect MongoDB
 const connectDB = async () => {
     try {
-        // Connect to local MongoDB database
-        // If "shopsphere" doesn't exist, MongoDB will create it automatically
-        await mongoose.connect("mongodb://127.0.0.1:27017/shopsphere");
+        const connUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/shopsphere";
+        await mongoose.connect(connUri);
 
         console.log("✅ MongoDB Connected Successfully");
     } catch (error) {
