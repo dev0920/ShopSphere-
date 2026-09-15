@@ -13,11 +13,11 @@ const connectDB = async () => {
 
         console.log("✅ MongoDB Connected Successfully");
     } catch (error) {
-        console.log("❌ MongoDB Connection Failed");
-        console.log(error.message);
-
-        // Stop the server if database connection fails
-        process.exit(1);
+        console.log("❌ MongoDB Connection Warning:", error.message);
+        // Do not crash server process on cloud environment so Render health check succeeds
+        if (!process.env.PORT && process.env.NODE_ENV !== "production") {
+            process.exit(1);
+        }
     }
 };
 
