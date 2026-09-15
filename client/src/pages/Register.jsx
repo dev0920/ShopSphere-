@@ -128,7 +128,9 @@ function Register() {
         ? "/delivery-dashboard"
         : "/";
 
-      setTimeout(() => navigate(targetPath), 1000);
+      setTimeout(() => {
+        window.location.href = targetPath;
+      }, 500);
     } catch {
       setMessage({ text: "Unable to connect to server.", type: "error" });
       setLoading(false);
@@ -170,7 +172,9 @@ function Register() {
         ? "/delivery-dashboard"
         : "/";
 
-      setTimeout(() => navigate(targetPath, { replace: true }), 900);
+      setTimeout(() => {
+        window.location.href = targetPath;
+      }, 500);
     } catch (error) {
       setMessage({ text: "Unable to connect to Google Auth server.", type: "error" });
     } finally {

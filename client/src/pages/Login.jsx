@@ -79,7 +79,9 @@ function Login() {
         dest = from;
       }
 
-      setTimeout(() => navigate(dest, { replace: true }), 700);
+      setTimeout(() => {
+        window.location.href = dest;
+      }, 500);
     } catch (err) {
       console.error("Login Error:", err);
       setMessage({ text: "Unable to connect to server.", type: "error" });
@@ -239,7 +241,9 @@ function Login() {
         dest = from;
       }
 
-      setTimeout(() => navigate(dest, { replace: true }), 900);
+      setTimeout(() => {
+        window.location.href = dest;
+      }, 500);
     } catch (error) {
       setMessage({ text: "Unable to connect to Google Auth server.", type: "error" });
     } finally {
