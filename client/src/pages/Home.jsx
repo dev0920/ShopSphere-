@@ -143,7 +143,7 @@ const REVIEWS = [
 ];
 
 export default function Home() {
-  const [user,           setUser]           = useState(null);
+  const [user,           setUser]           = useState(() => JSON.parse(localStorage.getItem("user")) || JSON.parse(sessionStorage.getItem("user")) || null);
   const [loading,        setLoading]        = useState(true);
   const [products,       setProducts]       = useState([]);
   const [searchTerm,     setSearchTerm]     = useState("");

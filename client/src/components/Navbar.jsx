@@ -110,7 +110,8 @@ const NAV_CATEGORIES = [
   },
 ];
 
-function Navbar({ user, handleLogout, searchTerm: externalSearchTerm, setSearchTerm: externalSetSearchTerm, cartCount = 0 }) {
+function Navbar({ user: propUser, handleLogout, searchTerm: externalSearchTerm, setSearchTerm: externalSetSearchTerm, cartCount = 0 }) {
+  const user = propUser || JSON.parse(localStorage.getItem("user")) || JSON.parse(sessionStorage.getItem("user")) || null;
   const [activeCategory, setActiveCategory]     = useState("All");
   const [hoveredCatLabel, setHoveredCatLabel]   = useState(null);
   const [showProfile, setShowProfile]           = useState(false);
