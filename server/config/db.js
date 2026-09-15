@@ -9,7 +9,7 @@ import mongoose from "mongoose";
 const connectDB = async () => {
     try {
         const connUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/shopsphere";
-        await mongoose.connect(connUri);
+        await mongoose.connect(connUri, { serverSelectionTimeoutMS: 5000 });
 
         console.log("✅ MongoDB Connected Successfully");
 
