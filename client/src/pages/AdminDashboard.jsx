@@ -878,10 +878,10 @@ export default function AdminDashboard() {
                       <td>
                         <div className="dash-user-cell">
                           <span className="dash-avatar dash-avatar--sm">
-                            {u.name.charAt(0).toUpperCase()}
+                            {((u.name || u.email || "U").charAt(0) || "U").toUpperCase()}
                           </span>
                           <div>
-                            <strong>{u.name}</strong>
+                            <strong>{u.name || u.email || "User"}</strong>
                             {u._id === me?._id && <span style={{ fontSize: 11, color: "#f43397", marginLeft: 6 }}>(You)</span>}
                           </div>
                         </div>
