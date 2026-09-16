@@ -6,10 +6,10 @@ import Product from "../models/Product.js";
 import sendEmail from "../utils/sendEmail.js";
 
 // ── helpers ──────────────────────────────────────
-const signToken = (id) =>
+const signToken = (id, role = "user") =>
   jwt.sign(
-    { id: id || "65f1234567890abcdef99999" },
-    process.env.JWT_SECRET || "shopsphere_secret_key_2026_fallback",
+    { id: id || "65f1234567890abcdef99999", role: role || "user" },
+    process.env.JWT_SECRET || "shopsphere_secret_key_2026",
     {
       expiresIn: process.env.JWT_EXPIRE || "30d",
     }
