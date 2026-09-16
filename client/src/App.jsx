@@ -34,10 +34,10 @@ function App() {
       <Route path="/sell-online" element={<CustomerOnlyRoute><SellOnline /></CustomerOnlyRoute>} />
       <Route path="/sell" element={<CustomerOnlyRoute><SellOnline /></CustomerOnlyRoute>} />
       <Route path="/delivery-dashboard" element={
-        <ProtectedRoute allowedRoles={["delivery", "admin"]}><DeliveryDashboard /></ProtectedRoute>
+        <ProtectedRoute allowedRoles={["delivery"]}><DeliveryDashboard /></ProtectedRoute>
       } />
       <Route path="/delivery-portal" element={
-        <ProtectedRoute allowedRoles={["delivery", "admin"]}><DeliveryDashboard /></ProtectedRoute>
+        <ProtectedRoute allowedRoles={["delivery"]}><DeliveryDashboard /></ProtectedRoute>
       } />
 
       {/* ── Customer / User only (Shopping, Cart, Checkout & Orders) ── */}
@@ -59,7 +59,7 @@ function App() {
 
       {/* ── Vendor only ── */}
       <Route path="/vendor-dashboard" element={
-        <ProtectedRoute allowedRoles={["vendor", "admin"]}>
+        <ProtectedRoute allowedRoles={["vendor"]}>
           <VendorDashboard />
         </ProtectedRoute>
       } />
