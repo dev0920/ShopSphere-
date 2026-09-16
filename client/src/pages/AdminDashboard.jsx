@@ -230,9 +230,16 @@ export default function AdminDashboard() {
     v.email.toLowerCase().includes(search.toLowerCase())
   );
 
+  const selectedVendorObj = vendorsList.find(v => v._id === selectedVendorId);
+  const selectedVendorName = selectedVendorObj?.name?.toLowerCase() || "";
+
   const displayedProducts = selectedVendorId === "all"
     ? allProducts
-    : allProducts.filter(p => p.createdBy?._id === selectedVendorId || p.createdBy === selectedVendorId);
+    : allProducts.filter(p => {
+        const pCreatedBy = String(p.createdBy?._id || p.createdBy || "");
+        const pSeller = String(p.seller || "").toLowerCase();
+        return pCreatedBy === selectedVendorId || (selectedVendorName && pSeller.includes(selectedVendorName));
+      });
 
   const approvedProducts = allProducts.filter(p => p.status === "approved");
   const rejectedProducts = allProducts.filter(p => p.status === "rejected");

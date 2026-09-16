@@ -1076,6 +1076,23 @@ const FALLBACK_PRODUCTS = [
   }
 ];
 
+const VENDOR_MAP = {
+  "Ethnic Wear": { name: "Kashi Silk & Handloom", id: "65f1234567890abcdef88888" },
+  "Western Dresses": { name: "Urban Chic Apparel", id: "65f1234567890abcdef88887" },
+  "Menswear": { name: "Royal Men's Hub", id: "65f1234567890abcdef88886" },
+  "Footwear": { name: "StepRight Footwear", id: "65f1234567890abcdef88885" },
+  "Bags": { name: "StepRight Footwear", id: "65f1234567890abcdef88885" },
+  "Watches": { name: "StepRight Footwear", id: "65f1234567890abcdef88885" },
+  "Jewellery": { name: "Urban Chic Apparel", id: "65f1234567890abcdef88887" },
+  "Beauty": { name: "TechGalaxy Electronics", id: "65f1234567890abcdef88884" },
+  "Electronics": { name: "TechGalaxy Electronics", id: "65f1234567890abcdef88884" },
+  "Home Decor": { name: "TechGalaxy Electronics", id: "65f1234567890abcdef88884" },
+  "Grocery": { name: "TechGalaxy Electronics", id: "65f1234567890abcdef88884" },
+  "Kids & Toys": { name: "Urban Chic Apparel", id: "65f1234567890abcdef88887" },
+  "Sports & Fitness": { name: "Royal Men's Hub", id: "65f1234567890abcdef88886" },
+  "Accessories": { name: "Urban Chic Apparel", id: "65f1234567890abcdef88887" },
+};
+
 // =====================================================
 // GET /api/products  (public)
 // Only approved products are visible to shoppers.
@@ -1085,11 +1102,17 @@ export const getProducts = async (req, res) => {
   try {
     const { category, search, page = 1, limit = 50, status, vendorId } = req.query;
 
-    if (mongoose.connection.readyState !== 1) {
-      let filtered = FALLBACK_PRODUCTS.map(p => ({
+    const enrichProduct = (p) => {
+      const v = VENDOR_MAP[p.category] || { name: p.seller || "ShopSphere Vendor", id: "65f1234567890abcdef88888" };
+      return {
         ...p,
-        createdBy: p.createdBy || (p.seller === "Kashi Silk & Handloom" ? "65f1234567890abcdef88888" : "65f1234567890abcdef99999")
-      }));
+        seller: p.seller && p.seller !== "ShopSphere Vendor" ? p.seller : v.name,
+        createdBy: p.createdBy || v.id,
+      };
+    };
+
+    if (mongoose.connection.readyState !== 1) {
+      let filtered = FALLBACK_PRODUCTS.map(enrichProduct);
 
       if (status) {
         filtered = filtered.filter(p => p.status === status);
@@ -1103,8 +1126,7 @@ export const getProducts = async (req, res) => {
       if (vendorId && vendorId !== "undefined" && vendorId !== "null") {
         filtered = filtered.filter(p => 
           String(p.createdBy) === String(vendorId) || 
-          p.seller?.toLowerCase().includes(vendorId.toLowerCase()) ||
-          vendorId.includes("kashi") || vendorId.includes("vendor")
+          p.seller?.toLowerCase().includes(vendorId.toLowerCase())
         );
       }
 
@@ -1145,7 +1167,12 @@ export const getProducts = async (req, res) => {
       Product.countDocuments(filter),
     ]);
 
-    res.status(200).json({ success: true, count: products.length, total, products });
+    const enrichedList = products.map(p => {
+      const pObj = p.toObject ? p.toObject() : p;
+      return enrichProduct(pObj);
+    });
+
+    res.status(200).json({ success: true, count: enrichedList.length, total, products: enrichedList });
   } catch (error) {
     console.error("getProducts:", error.message);
     let filtered = FALLBACK_PRODUCTS.map(p => ({
