@@ -1086,15 +1086,33 @@ export const getProducts = async (req, res) => {
     const { category, search, page = 1, limit = 50, status, vendorId } = req.query;
 
     if (mongoose.connection.readyState !== 1) {
-      let filtered = FALLBACK_PRODUCTS;
-      if (category) filtered = filtered.filter(p => p.category.toLowerCase() === category.toLowerCase());
+      let filtered = FALLBACK_PRODUCTS.map(p => ({
+        ...p,
+        createdBy: p.createdBy || (p.seller === "Kashi Silk & Handloom" ? "65f1234567890abcdef88888" : "65f1234567890abcdef99999")
+      }));
+
+      if (status) {
+        filtered = filtered.filter(p => p.status === status);
+      }
+      if (category) {
+        filtered = filtered.filter(p => p.category.toLowerCase() === category.toLowerCase());
+      }
+      if (search) {
+        filtered = filtered.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+      }
+      if (vendorId && vendorId !== "undefined" && vendorId !== "null") {
+        filtered = filtered.filter(p => 
+          String(p.createdBy) === String(vendorId) || 
+          p.seller?.toLowerCase().includes(vendorId.toLowerCase()) ||
+          vendorId.includes("kashi") || vendorId.includes("vendor")
+        );
+      }
+
       return res.status(200).json({ success: true, count: filtered.length, total: filtered.length, products: filtered });
     }
 
     const filter = {};
 
-    // Public browsing → only approved products
-    // Admin/Vendor fetch with explicit status param → respect it
     if (status) {
       filter.status = status;
     } else {
@@ -1130,7 +1148,13 @@ export const getProducts = async (req, res) => {
     res.status(200).json({ success: true, count: products.length, total, products });
   } catch (error) {
     console.error("getProducts:", error.message);
-    let filtered = FALLBACK_PRODUCTS;
+    let filtered = FALLBACK_PRODUCTS.map(p => ({
+      ...p,
+      createdBy: p.createdBy || (p.seller === "Kashi Silk & Handloom" ? "65f1234567890abcdef88888" : "65f1234567890abcdef99999")
+    }));
+    if (req.query.status) {
+      filtered = filtered.filter(p => p.status === req.query.status);
+    }
     if (req.query.category) {
       filtered = filtered.filter(p => p.category.toLowerCase() === req.query.category.toLowerCase());
     }
